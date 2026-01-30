@@ -1,0 +1,26 @@
+<div class="login-wrapper">
+	<mat-card class="login-card">
+		<h2 class="login-title">Sign in</h2>
+
+		<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+			<mat-form-field appearance="fill" class="full-width">
+				<mat-label>Email</mat-label>
+				<input matInput formControlName="username" autocomplete="username" />
+			</mat-form-field>
+
+			<mat-form-field appearance="fill" class="full-width">
+				<mat-label>Password</mat-label>
+				<input matInput type="password" formControlName="password" autocomplete="current-password" />
+			</mat-form-field>
+
+			<button mat-raised-button color="primary" class="full-width" type="submit">Sign in</button>
+			<div *ngIf="loginError" class="error-message" role="alert">
+				{{ loginError }}
+			</div>
+		</form>
+
+		<div class="register">
+			New user? <a href="/register">Create an account</a>
+		</div>
+	</mat-card>
+</div>
