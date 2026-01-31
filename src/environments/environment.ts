@@ -3,6 +3,7 @@ export const environment = {
   apiBaseUrl: 'http://localhost:3001/api',
   endpoints: {
     login: '/auth/login',
-    register: '/auth/register'
+    register: '/auth/register',
+    users: '/user'
   }
 };

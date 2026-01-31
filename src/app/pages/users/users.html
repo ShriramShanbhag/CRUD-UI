@@ -1,0 +1,19 @@
+<div class="users-wrapper">
+  <div class="users-grid">
+    <ng-container *ngIf="users$ | async as users; else loading">
+      <mat-card class="user-card" *ngFor="let u of users">
+        <mat-card-title>{{ u.name ?? u.email }}</mat-card-title>
+        <mat-card-subtitle>{{ u.email }}</mat-card-subtitle>
+        <mat-card-content>
+          <div class="role">Role: {{ u.role ?? '—' }}</div>
+        </mat-card-content>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="loading">
+        <mat-progress-spinner mode="indeterminate" diameter="48"></mat-progress-spinner>
+      </div>
+    </ng-template>
+  </div>
+</div>
