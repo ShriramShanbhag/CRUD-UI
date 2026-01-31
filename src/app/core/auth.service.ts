@@ -9,6 +9,7 @@ export interface User {
   id?: string | number;
   name?: string;
   email: string;
+  role?: string;
 }
 
 @Injectable({ providedIn: 'root' })
@@ -52,6 +53,12 @@ export class AuthService {
         this.storage.setUser(res.user ?? null);
       })
     );
+  }
+
+  getUserRole(): string | null {
+    const user = this._currentUser();
+    // Assuming user object has a 'role' property
+    return (user && (user as User).role) ?? null;
   }
 
   logout(): void {
