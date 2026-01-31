@@ -57,8 +57,12 @@ export class AuthService {
 
   getUserRole(): string | null {
     const user = this._currentUser();
-    // Assuming user object has a 'role' property
     return (user && (user as User).role) ?? null;
+  }
+
+  getUserName(): string | null {
+    const user = this._currentUser();
+    return (user && (user as User).name) ?? null;
   }
 
   logout(): void {
