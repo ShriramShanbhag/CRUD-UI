@@ -9,36 +9,24 @@ import { AuthService } from '../../core/auth.service';
   selector: 'app-navbar',
   standalone: true,
   imports: [CommonModule, MatToolbarModule, MatButtonModule],
-  template: `
-    <mat-toolbar class="app-toolbar" color="primary">
-      <span class="brand">CRUD UI</span>
-      <span class="spacer"></span>
-      <button mat-button (click)="onLogout()">Logout</button>
-    </mat-toolbar>
-  `,
-  styles: [
-    `
-      .app-toolbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1000;
-      }
-      .spacer {
-        flex: 1 1 auto;
-      }
-      .brand {
-        font-weight: 600;
-      }
-    `,
-  ],
+  templateUrl: './navbar.html',
+  styleUrls: ['./navbar.css'],
 })
 export class Navbar {
-  constructor(private auth: AuthService, private router: Router) {}
+  constructor(private auth: AuthService, private router: Router) {
+    console.log('Welcome: ', auth.getUserRole());
+  }
 
   onLogout() {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
+  
+    get displayName(): string {
+      return this.auth.getUserName() || 'User';
+    }
+
+    get role(): string | null {
+      return this.auth.getUserRole();
+    }
 }

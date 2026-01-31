@@ -1,0 +1,5 @@
+<mat-toolbar class="app-toolbar" color="primary">
+  <span class="brand">{{ displayName }}<span *ngIf="role"> ({{ role }})</span></span>
+  <span class="spacer"></span>
+  <button mat-button (click)="onLogout()">Logout</button>
+</mat-toolbar>
